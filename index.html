@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1" />
+    <title>pocket-sized-facade.js Demo</title>
+    <style>
+      html {
+        box-sizing: border-box;
+      }
+
+      *,
+      *:before,
+      *:after {
+        margin: 0;
+        padding: 0;
+        box-sizing: inherit;
+      }
+
+      body {
+        padding: 1em;
+        font-family: -apple-system, BlinkMacSystemFont, 'Helvetica', 'Arial',
+          sans-serif;
+        font-size: 1em;
+        line-height: 1.2;
+        color: #222;
+        letter-spacing: 0.01em;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-weight: normal;
+        line-height: 1.3;
+      }
+
+      canvas {
+        border: 1px solid #000;
+      }
+    </style>
+  </head>
+  <body>
+    <script
+      type="module"
+      src="https://unpkg.com/pocket-sized-facade.js"
+    ></script>
+
+    <canvas id="drawCircle" width="250" height="250"></canvas>
+
+    <script type="module">
+      import {
+        drawCircle,
+        resizeForHDPI,
+      } from 'https://unpkg.com/pocket-sized-facade.js';
+
+      const canvas = document.querySelector('#drawCircle');
+      const context = canvas.getContext('2d');
+
+      resizeForHDPI(context, 2);
+
+      drawCircle(context, 125, 125, 75, {
+        fillStyle: '#F74E00',
+        lineWidth: 10,
+        strokeStyle: '#000070',
+      });
+    </script>
+
+    <canvas id="drawImage" width="250" height="250"></canvas>
+
+    <script type="module">
+      import {
+        drawImage,
+        resizeForHDPI,
+      } from 'https://unpkg.com/pocket-sized-facade.js';
+
+      const canvas = document.querySelector('#drawImage');
+      const context = canvas.getContext('2d');
+
+      resizeForHDPI(context, 2);
+
+      const image = document.createElement('img');
+
+      image.setAttribute(
+        'src',
+        'https://duckduckgo.com/assets/logo_homepage.normal.v108.svg'
+      );
+
+      const draw = () => {
+        drawImage(context, image, 35, 35);
+
+        requestAnimationFrame(draw);
+      };
+
+      requestAnimationFrame(draw);
+    </script>
+
+    <canvas id="drawLine" width="250" height="250"></canvas>
+
+    <script type="module">
+      import {
+        drawLine,
+        resizeForHDPI,
+      } from 'https://unpkg.com/pocket-sized-facade.js';
+
+      const canvas = document.querySelector('#drawLine');
+      const context = canvas.getContext('2d');
+
+      resizeForHDPI(context, 2);
+
+      drawLine(context, 75, 125, 0, 0, 100, 0, {
+        lineWidth: 10,
+        strokeStyle: '#000070',
+      });
+    </script>
+
+    <canvas id="drawPath" width="250" height="250"></canvas>
+
+    <script type="module">
+      import {
+        drawPath,
+        resizeForHDPI,
+      } from 'https://unpkg.com/pocket-sized-facade.js';
+
+      const canvas = document.querySelector('#drawPath');
+      const context = canvas.getContext('2d');
+
+      resizeForHDPI(context, 2);
+
+      drawPath(
+        context,
+        'M128,88.0901699 L165.956504,115.667184 L151.45841,160.287731 L104.54159,160.287731 L90.0434961,115.667184 L128,88.0901699 Z',
+        {
+          lineWidth: 10,
+          strokeStyle: '#000070',
+        }
+      );
+    </script>
+
+    <canvas id="drawPolygon1" width="250" height="250"></canvas>
+
+    <script type="module">
+      import {
+        drawPolygon,
+        resizeForHDPI,
+      } from 'https://unpkg.com/pocket-sized-facade.js';
+
+      const canvas = document.querySelector('#drawPolygon1');
+      const context = canvas.getContext('2d');
+
+      resizeForHDPI(context, 2);
+
+      drawPolygon(
+        context,
+        75,
+        75,
+        [
+          [5, 5],
+          [90, 5],
+          [90, 90],
+          [5, 90],
+        ],
+        true,
+        {
+          fillStyle: '#F74E00',
+          lineWidth: 10,
+          strokeStyle: '#000070',
+        }
+      );
+    </script>
+
+    <canvas id="drawPolygon2" width="250" height="250"></canvas>
+
+    <script type="module">
+      import {
+        drawPolygon,
+        resizeForHDPI,
+      } from 'https://unpkg.com/pocket-sized-facade.js';
+
+      const canvas = document.querySelector('#drawPolygon2');
+      const context = canvas.getContext('2d');
+
+      resizeForHDPI(context, 2);
+
+      drawPolygon(
+        context,
+        15,
+        75,
+        [
+          [20, 20],
+          [20, 100, 200, 100, 200, 20],
+        ],
+        false,
+        {
+          lineWidth: 10,
+          strokeStyle: '#000070',
+        }
+      );
+    </script>
+
+    <canvas id="drawPolygon3" width="250" height="250"></canvas>
+
+    <script type="module">
+      import {
+        drawPolygon,
+        resizeForHDPI,
+      } from 'https://unpkg.com/pocket-sized-facade.js';
+
+      const canvas = document.querySelector('#drawPolygon3');
+      const context = canvas.getContext('2d');
+
+      resizeForHDPI(context, 2);
+
+      drawPolygon(context, 75, 100, [[50, 0, 50, 0, Math.PI]], false, {
+        lineWidth: 10,
+        strokeStyle: '#000070',
+      });
+    </script>
+
+    <canvas id="drawPolyline1" width="250" height="250"></canvas>
+
+    <script type="module">
+      import {
+        drawPolyline,
+        resizeForHDPI,
+      } from 'https://unpkg.com/pocket-sized-facade.js';
+
+      const canvas = document.querySelector('#drawPolyline1');
+      const context = canvas.getContext('2d');
+
+      resizeForHDPI(context, 2);
+
+      drawPolyline(context, '100 75 175 75 175 175 75 175 75 100', false, {
+        fillStyle: '#F74E00',
+        lineWidth: 10,
+        strokeStyle: '#000070',
+      });
+    </script>
+
+    <canvas id="drawPolyline2" width="250" height="250"></canvas>
+
+    <script type="module">
+      import {
+        drawPolyline,
+        resizeForHDPI,
+      } from 'https://unpkg.com/pocket-sized-facade.js';
+
+      const canvas = document.querySelector('#drawPolyline2');
+      const context = canvas.getContext('2d');
+
+      resizeForHDPI(context, 2);
+
+      drawPolyline(context, '100 75 175 75 175 175 75 175 75 100', true, {
+        fillStyle: '#F74E00',
+        lineWidth: 10,
+        strokeStyle: '#000070',
+      });
+    </script>
+
+    <canvas id="drawRect" width="250" height="250"></canvas>
+
+    <script type="module">
+      import {
+        drawRect,
+        resizeForHDPI,
+      } from 'https://unpkg.com/pocket-sized-facade.js';
+
+      const canvas = document.querySelector('#drawRect');
+      const context = canvas.getContext('2d');
+
+      resizeForHDPI(context, 2);
+
+      drawRect(context, 75, 75, 100, 100, 10, {
+        fillStyle: '#F74E00',
+        lineWidth: 10,
+        strokeStyle: '#000070',
+      });
+    </script>
+
+    <canvas id="drawText" width="250" height="250"></canvas>
+
+    <script type="module">
+      import {
+        drawText,
+        resizeForHDPI,
+      } from 'https://unpkg.com/pocket-sized-facade.js';
+
+      const canvas = document.querySelector('#drawText');
+      const context = canvas.getContext('2d');
+
+      resizeForHDPI(context, 2);
+
+      drawText(context, 20, 60, 'Hello, ', {
+        fillStyle: '#000',
+        font: 'italic 50px Cascadia Code',
+      });
+
+      drawText(context, 20, 120, 'world!', {
+        fillStyle: '#000',
+        font: 'italic 50px Cascadia Code',
+      });
+    </script>
+  </body>
+</html>
